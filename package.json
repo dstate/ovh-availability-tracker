@@ -1,0 +1,27 @@
+{
+  "name": "ovh-availability-tracker",
+  "version": "1.0.0",
+  "description": "Tracks OVH servers availability for order",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstate/ovh-availability-tracker.git"
+  },
+  "keywords": [
+    "dstate",
+    "ovh",
+    "kimsufi"
+  ],
+  "author": "Romain 'dstate' Pichot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dstate/ovh-availability-tracker/issues"
+  },
+  "homepage": "https://github.com/dstate/ovh-availability-tracker#readme",
+  "dependencies": {
+    "nodemailer": "^2.3.2"
+  }
+}
