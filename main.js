@@ -42,6 +42,9 @@ function sendMail(elem) {
     auth: {
       user: config.mail.from,
       pass: config.mail.password
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 
