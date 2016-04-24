@@ -5,10 +5,9 @@ module.exports = {
   },
 
   mail: {
-    host: 'smtp.example.com',
-    from: 'johndoe@example.com',
+    from: 'johndoe@gmail.com',
     password: 'XXXXXX',
-    to: 'janedoe@example.com',
+    to: 'janedoe@gmail.com',
     senderName: 'John Doe',
     subject: '/!\\ Tracked Kimsufi(s) {ref} available /!\\',
     link: 'https://www.kimsufi.com/fr/serveurs.xml'
