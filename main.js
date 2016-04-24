@@ -36,15 +36,10 @@ https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
 
 function sendMail(elem) {
   var transporter = nodemailer.createTransport({
-    host: config.mail.host,
-    port: 25,
-    secure: false,
+    service: 'gmail',
     auth: {
       user: config.mail.from,
       pass: config.mail.password
-    },
-    tls: {
-      rejectUnauthorized: false
     }
   });
 
