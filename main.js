@@ -2,7 +2,7 @@ var https       = require('https');
 var nodemailer  = require('nodemailer');
 var config      = require('./config');
 
-console.log(new Date().toUTCString() + ': Starting');
+log('Fetching data...');
 https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
     (response) => {
       var buffer = '';
@@ -12,7 +12,7 @@ https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
       });
 
       response.on('end', () => {
-        console.log(new Date().toUTCString() + ': Fetched JSON');
+        log('Data received');
         json = JSON.parse(buffer);
 
         json.answer.availability.forEach((elem) => {
@@ -26,7 +26,7 @@ https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
                     || mz.availability === 'unavailable')
                   return;
 
-                console.log(new Date().toUTCString() + 'Found ' + elem.reference);
+                log('Found "' + elem.reference + '" !');
                 sendMail(elem);
               });
             });
@@ -56,7 +56,11 @@ function sendMail(elem) {
     if (error)
       return console.error(error);
 
-    console.log(new Date().toUTCString() + 'Main sent!');
-    console.log('Mail sent!');
+    log('Mail sent!');
   });
+}
+
+function log(msg) {
+  var d = new Date();
+  console.log('[' + d.toLocateString() + '] ' + msg);
 }
