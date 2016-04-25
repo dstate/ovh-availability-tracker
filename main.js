@@ -27,11 +27,11 @@ https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
                   return;
 
                 if (mz.availability === 'unavailable') {
-                  log('|__ Unavailable :((' + elem.reference + ':' + region + ')');
+                  log('|__ Unavailable => [' + elem.reference + ':' + region + ']');
                   return;
                 }
 
-                log('|__ Available! :) (' + elem.reference + ':' + region + ')');
+                log('|__ Available! => [' + elem.reference + ':' + region + ']');
                 sendMail(elem);
               });
             });
