@@ -20,13 +20,18 @@ https.get('https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2',
             if (elem.reference.toLowerCase() !== ref.toLowerCase())
               return;
 
+            log('Checking reference ' + elem.reference + '...');
             elem.metaZones.forEach((mz) => {
               config.tracking.regions.forEach((region) => {
-                if (mz.zone.toLowerCase() !== region.toLowerCase()
-                    || mz.availability === 'unavailable')
+                if (mz.zone.toLowerCase() !== region.toLowerCase())
                   return;
 
-                log('Found "' + elem.reference + '" !');
+                if (mz.availability === 'unavailable') {
+                  log('|__ Unavailable :((' + elem.reference + ':' + region + ')');
+                  return;
+                }
+
+                log('|__ Available! :) (' + elem.reference + ':' + region + ')');
                 sendMail(elem);
               });
             });
@@ -56,7 +61,7 @@ function sendMail(elem) {
     if (error)
       return console.error(error);
 
-    log('Mail sent!');
+    log('|__ Mail sent!');
   });
 }
 
