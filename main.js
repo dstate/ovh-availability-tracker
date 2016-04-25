@@ -67,5 +67,5 @@ function sendMail(elem) {
 
 function log(msg) {
   var d = new Date();
-  console.log('[' + d.toLocateString() + '] ' + msg);
+  console.log('[' + d.toLocaleString() + '] ' + msg);
 }
